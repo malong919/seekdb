@@ -320,6 +320,12 @@ public:
                                    const share::ObAiModelEndpointInfo &endpoint_info,
                                    ObJsonObject *http_response,
                                    ObIJsonBase *&result);
+  static int validate_embeddings(ObIAllocator &allocator, ObIJsonBase *value,
+                                 int64_t expected_count, int64_t dimension);
+  static int normalize_indexed_embeddings(ObIAllocator &allocator, ObJsonNode *value,
+                                          const char *index_key, ObIJsonBase *&result);
+  static int normalize_rerank_result(ObIAllocator &allocator, ObIJsonBase *value,
+                                     int64_t expected_count, ObJsonArray *&result);
   static int parse_embed_output(ObIAllocator &allocator, 
                                 const share::ObAiModelEndpointInfo &endpoint_info,
                                 ObJsonObject *http_response,

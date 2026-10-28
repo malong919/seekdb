@@ -286,6 +286,13 @@ _SQL_STANDALONE_SANITY_PARTITION = sql_partition_sources(
     SQL_SANITY_WITHOUT_PASS_STANDALONE_PATHS,
 )
 
+cc_library(
+    name = "ai_function_test_headers",
+    testonly = True,
+    deps = [":sql_runtime_internal_headers"] + _SQL_PRIVATE_HEADER_SHARE_DEPS,
+    visibility = ["//unittest/sql/engine/expr:__pkg__"],
+)
+
 _SQL_RUNTIME_UNITY_GROUPS = sql_groups_without(
     SQL_UNITY_GROUPS,
     SQL_OPTIMIZER_GROUP_NAMES,
